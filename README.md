@@ -1,7 +1,5 @@
 # emailaddress
 
-## Godoc
-
 https://pkg.go.dev/github.com/nishanths/emailaddress
 
 Package emailaddress parses and validates emails addresses, using the
@@ -15,7 +13,7 @@ according to RFCs and Wikipedia as valid. The same behavior is seen from
 this package as well.
 
 The net/mail package only provides an interface to parse addresses of the
-form "Barry Gibbs <bg@example.com>". This package provides an interaface to
+form "Barry Gibbs \<bg@example.com\>". This package provides an interaface to
 parse and validate standalone email addresses without the name (i.e. of the
 form "bg@example.com").
 
