@@ -25,17 +25,17 @@ import (
 // If the error is nil, the format of the email address can be considered
 // valid.
 func Parse(email string) (localPart, domain string, err error) {
+	addr, err := mail.ParseAddress(email)
+	if err != nil {
+		return "", "", fmt.Errorf("failed to parse address: %w", err)
+	}
+
 	if len(strings.TrimSpace(email)) != len(email) {
 		return "", "", errors.New("white space around email address")
 	}
 
 	if strings.HasPrefix(email, "<") && strings.HasSuffix(email, ">") {
 		return "", "", errors.New("angle brackets around email address")
-	}
-
-	addr, err := mail.ParseAddress(email)
-	if err != nil {
-		return "", "", fmt.Errorf("failed to parse address: %w", err)
 	}
 
 	if addr.Name != "" {

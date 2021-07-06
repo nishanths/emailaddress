@@ -38,7 +38,7 @@ func TestCheck(t *testing.T) {
 
 			{"under_score@example.com", "under_score", "example.com"},
 			{"simple@1234567890123456789012345678901234567890123456789012345678901234xx.com", "simple", "1234567890123456789012345678901234567890123456789012345678901234xx.com"},
-			{`"user@xyz"@example.org`, `"user@xyz"`, "example.org"},
+			{`"user@xyz"@example.org`, `"user@xyz"`, "example.org"}, // @ in local-part
 		}
 
 		for _, tt := range testcases {
@@ -73,16 +73,17 @@ func TestCheck(t *testing.T) {
 
 			// white space
 			{"", "failed to parse address: mail: no address"},
-			{" ", errWhitespace},
+			{" ", "failed to parse address: mail: no address"},
 			{" simple@example.com", errWhitespace},
 			{"simple@example.com ", errWhitespace},
 			{" simple@example.com ", errWhitespace},
 
 			// angle brackets
 			{"<simple@example.com>", errAngleBrackets},
-			{"<<simple@example.com>>", errAngleBrackets},
+			{"<<simple@example.com>>", "failed to parse address: mail: invalid string"},
 			{"<simple@example.com", "failed to parse address: mail: unclosed angle-addr"},
 			{"simple@example.com>", "failed to parse address: mail: expected single address, got \">\""},
+			{"< hello@example.com >", "failed to parse address: mail: unclosed angle-addr"},
 
 			// name + address
 			{"Barry Gibbs <bg@example.com>", errStandalone},
@@ -106,14 +107,14 @@ func TestCheck(t *testing.T) {
 func requireNoError(t *testing.T, err error) {
 	t.Helper()
 	if err != nil {
-		t.Fatalf("expected nil error, got: %q", err)
+		t.Fatalf("expected nil, got error: %q", err)
 	}
 }
 
 func requireError(t *testing.T, err error) {
 	t.Helper()
 	if err == nil {
-		t.Fatal("expected non-nil error, got nil")
+		t.Fatal("expected error, got nil")
 	}
 }
 
