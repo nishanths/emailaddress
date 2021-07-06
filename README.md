@@ -2,7 +2,7 @@
 
 ## Godoc
 
-https://go.pkg.dev/github.com/nishanths/emailaddress
+https://pkg.go.dev/github.com/nishanths/emailaddress
 
 Package emailaddress parses and validates emails addresses, using the
 standard library's net/mail package. The goal of the package is to never
