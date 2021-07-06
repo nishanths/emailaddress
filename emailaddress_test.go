@@ -38,6 +38,7 @@ func TestCheck(t *testing.T) {
 
 			{"under_score@example.com", "under_score", "example.com"},
 			{"simple@1234567890123456789012345678901234567890123456789012345678901234xx.com", "simple", "1234567890123456789012345678901234567890123456789012345678901234xx.com"},
+			{`"user@xyz"@example.org`, `"user@xyz"`, "example.org"},
 		}
 
 		for _, tt := range testcases {
