@@ -4,7 +4,6 @@
 
 https://go.pkg.dev/github.com/nishanths/emailaddress
 
-<blockquote>
 Package emailaddress parses and validates emails addresses, using the
 standard library's net/mail package. The goal of the package is to never
 classify a valid email address as invalid; this is in contrast to the overly
@@ -19,7 +18,6 @@ The net/mail package only provides an interface to parse addresses of the
 form "Barry Gibbs <bg@example.com>". This package provides an interaface to
 parse and validate standalone email addresses without the name (i.e. of the
 form "bg@example.com").
-</blockquote>
 
 ## API
 
