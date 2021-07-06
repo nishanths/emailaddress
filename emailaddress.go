@@ -24,6 +24,9 @@ import (
 // Parse parses an email address into its local-part and domain.
 // If the error is nil, the format of the email address can be considered
 // valid.
+//
+// Most callers will want to use strings.TrimSpace(email) before invoking
+// this function.
 func Parse(email string) (localPart, domain string, err error) {
 	addr, err := mail.ParseAddress(email)
 	if err != nil {
@@ -56,6 +59,8 @@ func Parse(email string) (localPart, domain string, err error) {
 // It is a shorthand for the piece of code:
 //     _, _, err := Parse(email)
 //     return err != nil
+// Most callers will want to use strings.TrimSpace(email) before invoking
+// this function.
 func IsValid(email string) bool {
 	_, _, err := Parse(email)
 	return err != nil
