@@ -59,6 +59,7 @@ func Parse(email string) (localPart, domain string, err error) {
 // It is a shorthand for the piece of code:
 //     _, _, err := Parse(email)
 //     return err != nil
+//
 // Most callers will want to use strings.TrimSpace(email) before invoking
 // this function.
 func IsValid(email string) bool {
