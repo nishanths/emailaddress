@@ -9,9 +9,9 @@
 // package as well.
 //
 // The net/mail package only provides an interface to parse addresses of the
-// form "Barry Gibbs <bg@example.com>". This package provides an interaface to
-// parse and validate standalone email addresses without the name (i.e. of
-// the form "bg@example.com").
+// form "Barry Gibbs <bg@example.com>" (name and email address).
+// This package provides an interface to parse and validate addresses without
+// the name part (i.e. of the form "bg@example.com").
 package emailaddress
 
 import (
